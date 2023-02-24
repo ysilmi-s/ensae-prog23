@@ -67,14 +67,33 @@ class Graph:
         self.graph[node1].append((node2, power_min, dist))
         self.graph[node2].append((node1, power_min, dist))
         self.nb_edges += 1
+        
     
 
     def get_path_with_power(self, src, dest, power):
         raise NotImplementedError
-    
+    def exploration(self,s):
+        C= []
+        for x in range(self.graph[s]):
+            if  x[0] not in C :
+                C.append(x[0])
+             for x in range(C):
+                if  x[0] not in C :
+                C.append(x[0])
+                
+
 
     def connected_components(self):
-        raise NotImplementedError
+        CC= []
+        N= self.nodes
+        while N != []:
+            C=exploration(self, N[0])
+            CC.apend(C)
+            N= N-C
+
+        return
+
+
 
 
     def connected_components_set(self):
